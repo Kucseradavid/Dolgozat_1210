@@ -40,8 +40,8 @@
             Console.WriteLine();
 
             Pet haziallat1 = new Pet("Apollo", "African Grey", 4, "123456", "001");
-            Pet haziallat2 = new Pet("Soleil", "White-bellied Caique", 2, "123456", "002");
-            Pet haziallat3 = new Pet("Ophelia", "White-bellied Caique", 2, "123456", "003");
+            Pet haziallat2 = new Pet("Soleil", "White-bellied Caique", 3, "123456", "002");
+            Pet haziallat3 = new Pet("Ophelia", "White-bellied Caique", 3, "123456", "003");
             //Console.WriteLine(haziallat1);
 
             HashSet<Pet> allatok1 = new HashSet<Pet>();
