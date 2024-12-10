@@ -1,6 +1,36 @@
 ﻿namespace Dolgozat_1210
 {
-    
+    class VetClinic
+    {
+        public string ClinicName { get; set; }
+        public string ClinicAddress { get; set; }
+        public string ClinicPhone { get; set; }
+        public string ClinicEmail { get; set; }
+        public HashSet<Vet> ListOfVets { get; set; }
+
+        public VetClinic (string clinicName, string clinicAddress, string clinicPhone, string clinicEmail, HashSet<Vet> listOfVets)
+        {
+            this.ClinicName = clinicName;
+            this.ClinicAddress = clinicAddress;
+            this.ClinicPhone = clinicPhone;
+            this.ClinicEmail = clinicEmail;
+            this.ListOfVets = listOfVets;
+        }
+
+        public override string ToString()
+        {
+            string info;
+
+            info = $"A klinika neve {this.ClinicName}.\n";
+            info += $"Elérhetőségei:\n\tCím: {this.ClinicAddress}\n\tEmail-cím: {this.ClinicEmail}\n\tTelefonszám: {this.ClinicPhone}\n";
+            info += "Az itt dolgozó állatorvosok:\n";
+            foreach (Vet vet in ListOfVets) {info += "\t" + vet.Name + "\n";}
+            info.TrimEnd();
+            
+            return info;
+        }
+    }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -25,7 +55,9 @@
             string[] fajok1 = { "African Grey", "White-bellied Caique", "Any other kind of bird" };
 
             Vet orvos1 = new Vet("987654", "Mr. Jacob Gypsum", "06202222122", "dr@gmail.com", "1001", fajok1, allatok1);
-            Console.WriteLine(orvos1);
+            //Console.WriteLine(orvos1);
+
+            //clinic tesztelésre vár
         }
     }
 }

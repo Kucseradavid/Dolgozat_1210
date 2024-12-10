@@ -38,5 +38,18 @@ namespace Dolgozat_1210
 
             return info;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (!(obj is Vet)) return false;
+
+            return this.PersonalId == ((Vet)obj).PersonalId;
+        }
+
+        public override int GetHashCode()
+        {
+            return PersonalId.GetHashCode();
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,19 @@ namespace Dolgozat_1210
             info += $"Gazdájának személyi száma {this.OwnerPersonalId}, saját chipszáma {this.ChipNumber}.";
             
             return info;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (!(obj is Pet)) return false;
+
+            return this.ChipNumber == ((Pet)obj).ChipNumber;
+        }
+
+        public override int GetHashCode()
+        {
+            return ChipNumber.GetHashCode();
         }
     }
 }
