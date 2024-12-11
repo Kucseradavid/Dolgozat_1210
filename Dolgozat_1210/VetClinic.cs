@@ -31,8 +31,8 @@ namespace Dolgozat_1210
             info += $"Elérhetőségei:\n\tCím: {this.ClinicAddress}\n\tEmail-cím: {this.ClinicEmail}\n\tTelefonszám: {this.ClinicPhone}\n";
             info += "Az itt dolgozó állatorvosok:\n";
             foreach (Vet vet in ListOfVets) { info += "\t" + vet.Name + "\n"; }
-            info.TrimEnd();
-
+            info = info.TrimEnd();
+            
             return info;
         }
     }

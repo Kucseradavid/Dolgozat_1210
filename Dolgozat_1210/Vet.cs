@@ -23,13 +23,25 @@ namespace Dolgozat_1210
             this.PatientList = patientList;
         }
 
+        public Vet(string personalId, string name, string phoneNumber, string emailAddress, string certificateNumber, string[] treatedSpecies, HashSet<Owner> ownerList)
+        {
+            this.PersonalId = personalId;
+            this.Name = name;
+            this.PhoneNumber = phoneNumber;
+            this.EmailAddress = emailAddress;
+            this.CertificateNumber = certificateNumber;
+            this.TreatedSpecies = treatedSpecies;
+            this.PatientList = FillPatientList(ownerList);
+        }
+
         public override string ToString()
         {
             string info;
 
             info = $"Eme állatorvos neve {this.Name}, személyszáma {this.PersonalId}.\n";
             info += $"Elérhetőségei:\n\tEmail-cím: {this.EmailAddress}\n\tTelefonszám: {this.PhoneNumber}\n";
-            info += $"Izészáma {this.CertificateNumber}. Általa kezelt állatfajok:\n\t";
+            info += $"Bizonyítványszáma {this.CertificateNumber}.";
+            info += " Általa kezelt állatfajok:\n\t";
             foreach (string species in this.TreatedSpecies) { info += species + ", "; }
             info = info.TrimEnd();
             info += "\nÁltala kezelt háziállatok:\n";
@@ -37,6 +49,27 @@ namespace Dolgozat_1210
             info = info.TrimEnd();
 
             return info;
+        }
+
+        public HashSet<Pet> FillPatientList(HashSet<Owner> owners)
+        {
+            HashSet<Pet> newPatientList = new HashSet<Pet>();
+
+            foreach (string species in this.TreatedSpecies)
+            {
+                foreach (Owner owner in owners)
+                {
+                    foreach (Pet pet in owner.GuardedPets)
+                    {
+                        if (pet.Species == species)
+                        {
+                            newPatientList.Add(pet);
+                        }
+                    }
+                }
+            }
+            
+            return newPatientList;
         }
 
         public override bool Equals(object obj)

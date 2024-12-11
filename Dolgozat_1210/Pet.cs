@@ -34,6 +34,26 @@ namespace Dolgozat_1210
             return info;
         }
 
+        public string IsTreatedByWho(VetClinic clinic)
+        {
+            string result;
+            
+            foreach (Vet vet in clinic.ListOfVets)
+            {
+                foreach (Pet pet in vet.PatientList)
+                {
+                    if (pet == this)
+                    {
+                        result = $"Ez a háziállat ({this.Name}) kezelve van a klinikán ({clinic.ClinicName}), méghozzá {vet.Name} által.";
+                        return result;
+                    }
+                }
+            }
+
+            result = $"Ez a háziállat ({this.Name}) nincs kezelve ezen a klinikán ({clinic.ClinicName}).";
+            return result;
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null) return false;

@@ -28,10 +28,23 @@ namespace Dolgozat_1210
             info = $"E személy neve {this.Name}, személyszáma {this.PersonalId}.\n";
             info += $"Elérhetőségei:\n\tEmail-cím: {this.EmailAddress}\n\tTelefonszám: {this.PhoneNumber}\n\tSzámlázási cím: {this.BillingAddress}\n";
             info += "Általa tartott háziállatok:\n";
-            foreach (Pet p in this.GuardedPets) {info += "\t" + p.Name + "\n";}
+            foreach (Pet p in this.GuardedPets) { info += "\t" + p.Name + "\n"; }
             info = info.TrimEnd();
 
             return info;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (!(obj is Owner)) return false;
+
+            return this.PersonalId == ((Owner)obj).PersonalId;
+        }
+
+        public override int GetHashCode()
+        {
+            return PersonalId.GetHashCode();
         }
     }
 }

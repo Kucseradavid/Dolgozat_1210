@@ -8,6 +8,7 @@
             Console.WriteLine("Hello, Dr. Pol! :)");
             Console.WriteLine("Az alább lévő program Easter egg-eket tartalmaz.");
             Console.WriteLine();
+            Console.WriteLine();
 
             //Állatok
             Pet haziallat1 = new Pet("Apollo", "African Grey", 4, "123456", "001");
@@ -17,7 +18,6 @@
             Pet haziallat5 = new Pet("Pama", "Puli", 14, "999999", "005");
             Pet haziallat6 = new Pet("Auróra", "House Cat", 1, "987654", "006");
             Pet haziallat7 = new Pet("Prim", "German Shepard", 3, "007007", "007");
-            //Console.WriteLine(haziallat1);
 
             //Pet hashsetek Owner-eknek (és egy esetben Vet-eknek)
             HashSet<Pet> allatok1 = new HashSet<Pet>(); //Dalton //Jacob Gypsum
@@ -32,21 +32,11 @@
             HashSet<Pet> allatok4 = new HashSet<Pet>(); //007
             allatok4.Add(haziallat7);
 
-            //Pet hashsetek Vet-eknek
-            HashSet<Pet> allatok5 = new HashSet<Pet>(); //Pol
-            allatok5.Add(haziallat4);
-            allatok5.Add(haziallat6);
-            HashSet<Pet> allatok6 = new HashSet<Pet>(); //Bubó
-            allatok6.Add(haziallat5);
-            allatok6.Add(haziallat7);
-            HashSet<Pet> allatok7 = new HashSet<Pet>(); //Én
-
             //Gazdák
             Owner gazdi1 = new Owner("123456", "Dalton", "06 70 420 6969", "apolloandfrens@gmail.com", "FL, something st. 0", allatok1);
             Owner gazdi2 = new Owner("999999", "PistaBéla", "06 30 55 55 440", "pamkutya@gmail.com", "Valami random budapesti cím", allatok2);
             Owner gazdi3 = new Owner("987654", "Nikus2200", "06 20 111 1111", "nikus@gmail.com", "Kecskemét asszem", allatok3);
             Owner gazdi4 = new Owner("007007", "James Bond", "06 70 007 0007", "nullanullahetesugynok@universal.com", "Holywood?", allatok4);
-            //Console.WriteLine(gazdi1);
 
             //Fajok Vet-eknek
             string[] fajok1 = { "African Grey", "White-bellied Caique", "Any other kind of bird" };
@@ -54,12 +44,20 @@
             string[] fajok3 = { "House Cat", "Floppa", "Lion" };
             string[] fajok4 = { "Turtle" };
 
+            //Üres Pet hashset Vet-eknek
+            HashSet<Pet> allatok5 = new HashSet<Pet>();
+
+            //Owner hashsetek Vet-eknek
+            HashSet<Owner> gazdik1 = new HashSet<Owner>();
+            gazdik1.Add(gazdi2);
+            gazdik1.Add(gazdi3);
+            gazdik1.Add(gazdi4);
+
             //Állatorvosok
             Vet orvos1 = new Vet("787878", "Dr. Jacob Gypsum", "06 20 22 22 122", "dr@gmail.com", "1001", fajok1, allatok1);
-            Vet orvos2 = new Vet("121212", "Dr. Bubó", "06 30 100 2000", "bubo@gmail.hu", "1002", fajok2, allatok6);
-            Vet orvos3 = new Vet("343434", "Dr. Pol", "06 50 300 4000", "janpol@gmail.com", "1003", fajok3, allatok5);
-            Vet orvos4 = new Vet("565656", "Dávid Kucsera (alternatív univerzumban)", "06 20 999 9999", "kd@gmail.hu", "1004", fajok4, allatok7);
-            //Console.WriteLine(orvos1);
+            Vet orvos2 = new Vet("121212", "Dr. Bubó", "06 30 100 2000", "bubo@gmail.hu", "1002", fajok2, gazdik1);
+            Vet orvos3 = new Vet("343434", "Dr. Pol", "06 50 300 4000", "janpol@gmail.com", "1003", fajok3, gazdik1);
+            Vet orvos4 = new Vet("565656", "Dávid Kucsera (alternatív univerzumben)", "06 20 999 9999", "kd@gmail.hu", "1004", fajok4, allatok5);
 
             //Vet hashsetek VetClinic-eknek
             HashSet<Vet> orvosok1 = new HashSet<Vet>();
@@ -72,7 +70,55 @@
             //Állatorvosi klinikák
             VetClinic klinika1 = new VetClinic("Gipsz Jakab klinikája", "B, Izé utca 7", "06 20 454 5454", "emil@emil.emil", orvosok1);
             VetClinic klinika2 = new VetClinic("The amazing Doctor Pol", "Amerika", "06 30 545 4545", "emal@emal.emal", orvosok2);
-            //Console.WriteLine(klinika1);
+
+            //kiírások
+            //a konzolos kiírás érthetőségének javítása érdekében van ennyi üres sor
+            Console.WriteLine(haziallat1);
+            Console.WriteLine();
+            Console.WriteLine(haziallat2);
+            Console.WriteLine();
+            Console.WriteLine(haziallat3);
+            Console.WriteLine();
+            Console.WriteLine(haziallat4);
+            Console.WriteLine();
+            Console.WriteLine(haziallat5);
+            Console.WriteLine();
+            Console.WriteLine(haziallat6);
+            Console.WriteLine();
+            Console.WriteLine(haziallat7);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine(gazdi1);
+            Console.WriteLine();
+            Console.WriteLine(gazdi2);
+            Console.WriteLine();
+            Console.WriteLine(gazdi3);
+            Console.WriteLine();
+            Console.WriteLine(gazdi4);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine(orvos1);
+            Console.WriteLine();
+            Console.WriteLine(orvos2);
+            Console.WriteLine();
+            Console.WriteLine(orvos3);
+            Console.WriteLine();
+            Console.WriteLine(orvos4);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine(klinika1);
+            Console.WriteLine();
+            Console.WriteLine(klinika2);
+            Console.WriteLine();
+            Console.WriteLine();
+
+            Console.WriteLine(haziallat1.IsTreatedByWho(klinika1));
+            Console.WriteLine(haziallat4.IsTreatedByWho(klinika1));
+            Console.WriteLine(haziallat6.IsTreatedByWho(klinika2));
+            Console.WriteLine(haziallat7.IsTreatedByWho(klinika2));
         }
     }
 }
