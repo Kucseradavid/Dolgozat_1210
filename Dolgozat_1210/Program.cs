@@ -1,4 +1,6 @@
-﻿namespace Dolgozat_1210
+﻿using System.Collections.Immutable;
+
+namespace Dolgozat_1210
 {
     internal class Program
     {
@@ -120,12 +122,47 @@
             Console.WriteLine(haziallat6.IsTreatedByWho(klinika2));
             Console.WriteLine(haziallat7.IsTreatedByWho(klinika2));
 
+
             //Utólagosan hozzáadott egy másik feladatból
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("--------");
+
+            //Új Pet-ek (és Owner) létrehozása
             Pet haziallat101 = new Pet("101");
             Pet haziallat102 = new Pet("Ismeretlen", "102");
             Pet haziallat103 = new Pet("Nemtudott", "000000", "103");
+            HashSet<Pet> allatok0 = new HashSet<Pet>();
+            allatok0.Add(haziallat101);
+            allatok0.Add(haziallat102); //allatok0.ass
+            allatok0.Add(haziallat103);
+            Owner gazdi0 = new Owner("000000", "Dooku gróf", "06200000000", "dookugrof@swmail.cor", "Coruscant, valahol", allatok0);
             
-            Owner gazdi0 = new Owner("000000", "Dooku gróf", "06200000000", "dookugrof@swmail.cor", "Coruscant, valahol", )
+            //klinika1-hez egy másik Vet hozzáadása hogy ne legyenek ugyanakkorák
+            string[] fajok0 = { "Hal", "Másik Hal" }; //új
+            Vet orvos0 = new Vet("000001", "Dr. Hal", "06 70 800 9000", "palettas@gmail.hu", "0000", fajok0, allatok0); //új
+            orvosok1.Add(orvos0);
+            klinika1.ListOfVets = orvosok1;
+
+            //VetClinic array IComparable teszteléshez
+            VetClinic[] klinikak = { klinika1, klinika2};
+
+            Console.WriteLine();
+            Console.WriteLine("Szortírozás előtti klinikák:");
+            foreach (VetClinic k in klinikak)
+            {
+                Console.WriteLine(k);
+            }
+
+            Array.Sort(klinikak);
+
+            Console.WriteLine();
+            Console.WriteLine("Szortírozás utáni klinikák:");
+            foreach (VetClinic k in klinikak)
+            {
+                Console.WriteLine(k);
+            }
         }
     }
 }

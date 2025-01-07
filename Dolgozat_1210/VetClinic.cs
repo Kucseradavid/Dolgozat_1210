@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dolgozat_1210
 {
-    class VetClinic
+    class VetClinic : IComparable
     {
         public string ClinicName { get; set; }
         public string ClinicAddress { get; set; }
@@ -34,6 +34,13 @@ namespace Dolgozat_1210
             info = info.TrimEnd();
             
             return info;
+        }
+
+        public int CompareTo(object objektum)
+        {
+            VetClinic klinika = objektum as VetClinic;
+
+            return this.ListOfVets.Count.CompareTo(klinika.ListOfVets.Count);
         }
     }
 }
