@@ -24,6 +24,24 @@ namespace Dolgozat_1210
             this.ChipNumber = chipNumber;
         }
 
+        public Pet(string chipNumber)
+        {
+            this.ChipNumber = chipNumber;
+        }
+
+        public Pet(string name, string chipNumber)
+        {
+            this.Name=name;
+            this.ChipNumber = chipNumber;
+        }
+
+        public Pet(string name, string ownerPersonalId, string chipNumber)
+        {
+            this.Name = name;
+            this.OwnerPersonalId = ownerPersonalId;
+            this.ChipNumber = chipNumber;
+        }
+
         public override string ToString()
         {
             string info;
@@ -52,14 +70,6 @@ namespace Dolgozat_1210
 
             result = $"Ez a háziállat ({this.Name}) nincs kezelve ezen a klinikán ({clinic.ClinicName}).";
             return result;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            if (!(obj is Pet)) return false;
-
-            return this.ChipNumber == ((Pet)obj).ChipNumber;
         }
 
         public override int GetHashCode()

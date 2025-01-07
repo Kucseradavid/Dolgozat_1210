@@ -33,18 +33,5 @@ namespace Dolgozat_1210
 
             return info;
         }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null) return false;
-            if (!(obj is Owner)) return false;
-
-            return this.PersonalId == ((Owner)obj).PersonalId;
-        }
-
-        public override int GetHashCode()
-        {
-            return PersonalId.GetHashCode();
-        }
     }
 }

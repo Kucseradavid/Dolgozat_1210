@@ -12,5 +12,10 @@ namespace Dolgozat_1210
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
         public string EmailAddress { get; set; }
+
+        public override int GetHashCode()
+        {
+            return PersonalId.GetHashCode();
+        }
     }
 }

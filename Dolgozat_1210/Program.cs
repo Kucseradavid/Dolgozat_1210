@@ -119,6 +119,13 @@
             Console.WriteLine(haziallat4.IsTreatedByWho(klinika1));
             Console.WriteLine(haziallat6.IsTreatedByWho(klinika2));
             Console.WriteLine(haziallat7.IsTreatedByWho(klinika2));
+
+            //Utólagosan hozzáadott egy másik feladatból
+            Pet haziallat101 = new Pet("101");
+            Pet haziallat102 = new Pet("Ismeretlen", "102");
+            Pet haziallat103 = new Pet("Nemtudott", "000000", "103");
+            
+            Owner gazdi0 = new Owner("000000", "Dooku gróf", "06200000000", "dookugrof@swmail.cor", "Coruscant, valahol", )
         }
     }
 }
