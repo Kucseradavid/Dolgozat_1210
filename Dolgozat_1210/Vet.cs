@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dolgozat_1210
 {
-    class Vet : Person
+    class Vet : Person, IComparable
     {
         public string CertificateNumber { get; set; }
         public string[] TreatedSpecies { get; set; }
@@ -70,6 +70,13 @@ namespace Dolgozat_1210
             }
             
             return newPatientList;
+        }
+
+        public int CompareTo(object objektum)
+        {
+            Vet orvos = objektum as Vet;
+
+            return this.TreatedSpecies.Length.CompareTo(orvos.TreatedSpecies.Length);
         }
     }
 }

@@ -133,10 +133,12 @@ namespace Dolgozat_1210
             Pet haziallat101 = new Pet("101");
             Pet haziallat102 = new Pet("Ismeretlen", "102");
             Pet haziallat103 = new Pet("Nemtudott", "000000", "103");
+
             HashSet<Pet> allatok0 = new HashSet<Pet>();
             allatok0.Add(haziallat101);
             allatok0.Add(haziallat102); //allatok0.ass
             allatok0.Add(haziallat103);
+
             Owner gazdi0 = new Owner("000000", "Dooku gróf", "06200000000", "dookugrof@swmail.cor", "Coruscant, valahol", allatok0);
             
             //klinika1-hez egy másik Vet hozzáadása hogy ne legyenek ugyanakkorák
@@ -144,6 +146,44 @@ namespace Dolgozat_1210
             Vet orvos0 = new Vet("000001", "Dr. Hal", "06 70 800 9000", "palettas@gmail.hu", "0000", fajok0, allatok0); //új
             orvosok1.Add(orvos0);
             klinika1.ListOfVets = orvosok1;
+
+            //Owner array IComparable teszteléshez
+            Owner[] gazdik = { gazdi1, gazdi2, gazdi3, gazdi4 };
+
+            Console.WriteLine();
+            Console.WriteLine("Szortírozás előtti gazdik:");
+            foreach (Owner g in gazdik)
+            {
+                Console.WriteLine(g);
+            }
+
+            Array.Sort(gazdik);
+
+            Console.WriteLine();
+            Console.WriteLine("Szortírozás utáni gazdik:");
+            foreach (Owner g in gazdik)
+            {
+                Console.WriteLine(g);
+            }
+
+            //Vet array IComparable teszteléshez
+            Vet[] orvosok = { orvos1, orvos2, orvos3, orvos4 };
+
+            Console.WriteLine();
+            Console.WriteLine("Szortírozás előtti orvosok:");
+            foreach (Vet v in orvosok)
+            {
+                Console.WriteLine(v);
+            }
+
+            Array.Sort(orvosok);
+
+            Console.WriteLine();
+            Console.WriteLine("Szortírozás utáni orvosok:");
+            foreach (Vet v in orvosok)
+            {
+                Console.WriteLine(v);
+            }
 
             //VetClinic array IComparable teszteléshez
             VetClinic[] klinikak = { klinika1, klinika2};

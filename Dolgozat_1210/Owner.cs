@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dolgozat_1210
 {
-    class Owner : Person
+    class Owner : Person, IComparable
     {
         public string BillingAddress { get; set; }
         public HashSet<Pet> GuardedPets { get; set; }
@@ -32,6 +32,13 @@ namespace Dolgozat_1210
             info = info.TrimEnd();
 
             return info;
+        }
+
+        public int CompareTo(object objektum)
+        {
+            Owner gazdi = objektum as Owner;
+
+            return this.GuardedPets.Count.CompareTo(gazdi.GuardedPets.Count);
         }
     }
 }
